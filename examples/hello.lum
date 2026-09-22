@@ -1,0 +1,5 @@
+// Hello, Lumen!
+let name = "Lumen";
+println("Hello, " ++ name ++ "!");
+println(2 + 3 * 4);
+println(if 1 < 2 then "math works" else "uh oh");

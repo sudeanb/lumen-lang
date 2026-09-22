@@ -1,0 +1,26 @@
+// Lists, higher-order functions and quicksort.
+
+let filter = fn(xs, keep) =>
+  if len(xs) == 0 then xs
+  else if keep(head(xs)) then [head(xs)] ++ filter(tail(xs), keep)
+  else filter(tail(xs), keep);
+
+let smaller = fn(xs, pivot) => filter(xs, fn(x) => x <= pivot);
+let larger  = fn(xs, pivot) => filter(xs, fn(x) => x >  pivot);
+
+let quicksort = fn(xs) =>
+  if len(xs) <= 1 then xs
+  else
+    quicksort(smaller(tail(xs), head(xs)))
+    ++ [head(xs)]
+    ++ quicksort(larger(tail(xs), head(xs)));
+
+println(quicksort([5, 2, 8, 1, 9, 3, 7, 4, 6]));
+
+// polymorphic map: works over ints and strings
+let map = fn(xs, f) =>
+  if len(xs) == 0 then xs
+  else [f(head(xs))] ++ map(tail(xs), f);
+
+println(map([1, 2, 3], fn(x) => x * x));
+println(map([1, 2, 3], fn(x) => x * 10));

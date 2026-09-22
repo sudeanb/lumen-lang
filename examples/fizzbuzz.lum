@@ -1,0 +1,15 @@
+// FizzBuzz 1..15 — demonstrates `do` blocks for sequencing side effects.
+let name = fn(n) =>
+  if n % 15 == 0 then "FizzBuzz"
+  else if n % 3 == 0 then "Fizz"
+  else if n % 5 == 0 then "Buzz"
+  else str(n);
+
+let loop = fn(i, n) =>
+  if i > n then nil
+  else do {
+    println(name(i));
+    loop(i + 1, n);
+  };
+
+loop(1, 15)

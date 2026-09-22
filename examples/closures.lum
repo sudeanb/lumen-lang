@@ -1,0 +1,15 @@
+// Closures capture their environment by value.
+let make_adder = fn(n) => fn(x) => x + n;
+
+let add10 = make_adder(10);
+let add100 = make_adder(100);
+println(add10(5));    // 15
+println(add100(5));   // 105
+
+// function composition
+let compose = fn(f, g) => fn(x) => f(g(x));
+let inc = fn(x) => x + 1;
+let dbl = fn(x) => x * 2;
+
+println(compose(inc, dbl)(5));  // inc(dbl(5)) = 11
+println(compose(dbl, inc)(5));  // dbl(inc(5)) = 12
