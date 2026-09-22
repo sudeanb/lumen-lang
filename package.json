@@ -1,0 +1,19 @@
+{
+  "name": "lumen-lang",
+  "version": "0.1.0",
+  "description": "Lumen — a small statically-typed functional programming language with a bytecode VM, written from scratch in pure JavaScript",
+  "type": "module",
+  "bin": {
+    "lumen": "bin/lumen.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "repl": "node bin/lumen.js",
+    "start": "node bin/lumen.js examples/fib.lum"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["programming-language", "compiler", "interpreter", "bytecode", "virtual-machine", "type-inference", "hindley-milner"],
+  "license": "MIT"
+}
