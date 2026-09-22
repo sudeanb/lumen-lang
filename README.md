@@ -8,7 +8,7 @@ written from scratch with zero dependencies.**
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%E2%89%A518-green)](package.json)
 
-🌐 **[Try it live in the playground →](https://sudeanb.github.io/lumen-lang/playground/)**
+🌐 **[Try it live in the playground →](https://sudeanb.github.io/lumen-lang/)**
 (write Lumen, see inferred types, run it — everything executes client-side)
 
 ```lumen
