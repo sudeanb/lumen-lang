@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumen Playground — write, type-check and run Lumen in your browser</title>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --border: #30363d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #f7b731; --ok: #3fb950; --err: #f85149;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    min-height: 100vh; display: flex; flex-direction: column;
+  }
+  header {
+    padding: 14px 24px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  header h1 { font-size: 20px; color: var(--accent); }
+  header span { color: var(--muted); font-size: 13px; }
+  header a { color: var(--muted); font-size: 13px; margin-left: auto; }
+  main {
+    flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--border);
+  }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+  section { background: var(--panel); display: flex; flex-direction: column; min-height: 70vh; }
+  .bar {
+    padding: 8px 16px; border-bottom: 1px solid var(--border);
+    display: flex; gap: 8px; align-items: center;
+  }
+  .bar strong { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  button {
+    background: var(--accent); color: #000; border: 0; border-radius: 6px;
+    padding: 6px 14px; font-weight: 600; cursor: pointer; font-size: 13px;
+  }
+  button:hover { filter: brightness(1.1); }
+  button.ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+  button.ghost:hover { color: var(--text); }
+  textarea, pre {
+    flex: 1; padding: 16px; background: transparent; border: 0; outline: none;
+    font: 14px/1.55 "SF Mono", ui-monospace, Menlo, monospace; color: var(--text);
+    resize: none; white-space: pre; overflow: auto;
+  }
+  #out .line { padding: 1px 0; }
+  #out .result { color: var(--ok); margin-top: 8px; }
+  #out .err { color: var(--err); }
+  footer { padding: 8px 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>☉ Lumen</h1>
+  <span>a tiny typed functional language — compiled to bytecode, running in your browser</span>
+  <a href="https://github.com/sudeanb/lumen-lang">GitHub ↗</a>
+</header>
+<main>
+  <section>
+    <div class="bar">
+      <strong>Editor</strong>
+      <button id="run">▶ Run <small style="opacity:.6">⌘⏎</small></button>
+      <span style="flex:1"></span>
+      <button class="ghost preset" data-p="fib">fib</button>
+      <button class="ghost preset" data-p="fizzbuzz">fizzbuzz</button>
+      <button class="ghost preset" data-p="closures">closures</button>
+      <button class="ghost preset" data-p="lists">quicksort</button>
+    </div>
+    <textarea id="code" spellcheck="false"></textarea>
+  </section>
+  <section>
+    <div class="bar"><strong>Output</strong></div>
+    <pre id="out"></pre>
+  </section>
+</main>
+<footer>Everything runs client-side — no server, no telemetry. Types are inferred with Hindley-Milner (Algorithm W); programs compile to bytecode for a custom stack VM.</footer>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
